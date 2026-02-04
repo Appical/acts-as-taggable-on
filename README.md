@@ -251,6 +251,10 @@ User.tagged_with(["awesome", "cool"], :exclude => true)
 
 # Find users with any of the tags based on context:
 User.tagged_with(['awesome', 'cool'], :on => :tags, :any => true).tagged_with(['smart', 'shy'], :on => :skills, :any => true)
+
+# Find users tagged within a specific period:
+# (e.g. 2026-01-01 00:00 <= taggings.created_at <= 2026-02-01 00:00):
+User.tagged_with('awesome', start_at: Time.new(2026, 1, 1), end_at: Time.new(2026, 2, 1))
 ```
 
 #### Wildcard tag search
