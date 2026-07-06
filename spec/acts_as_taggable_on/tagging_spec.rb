@@ -65,8 +65,12 @@ RSpec.describe ActsAsTaggableOn::Tagging do
   end
 
   context 'when removing unused tags' do
-    before do
+    around(:example) do |example|
+      original_value = ActsAsTaggableOn.remove_unused_tags
       ActsAsTaggableOn.remove_unused_tags = true
+      example.run
+    ensure
+      ActsAsTaggableOn.remove_unused_tags = original_value
     end
 
     it 'should call reload on tag if it was loaded' do
