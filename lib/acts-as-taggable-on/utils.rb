@@ -6,8 +6,16 @@ module ActsAsTaggableOn
   module Utils
     class << self
       # Use ActsAsTaggableOn::Tag connection
+      #
+      # Rails 7.2 deprecated the model-level `.connection` in favour of
+      # `lease_connection` (rails/rails#51230). Prefer it when available and
+      # fall back to `connection` for ActiveRecord < 7.2.
       def connection
-        ActsAsTaggableOn::Tag.connection
+        if ActsAsTaggableOn::Tag.respond_to?(:lease_connection)
+          ActsAsTaggableOn::Tag.lease_connection
+        else
+          ActsAsTaggableOn::Tag.connection
+        end
       end
 
       def using_postgresql?
