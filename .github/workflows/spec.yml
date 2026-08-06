@@ -21,7 +21,6 @@ jobs:
           - gemfiles/activerecord_8.1.gemfile
           - gemfiles/activerecord_8.0.gemfile
           - gemfiles/activerecord_7.2.gemfile
-          - gemfiles/activerecord_7.1.gemfile
         db:
           - mysql
           - postgresql
@@ -30,9 +29,6 @@ jobs:
           - ruby: truffleruby-head
             db: postgresql
             gemfile: gemfiles/activerecord_8.0.gemfile
-          - ruby: truffleruby-head
-            db: postgresql
-            gemfile: gemfiles/activerecord_7.1.gemfile
           - ruby: truffleruby-head
             db: postgresql
             gemfile: gemfiles/activerecord_7.2.gemfile

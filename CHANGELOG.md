@@ -12,8 +12,10 @@ As such, _Breaking Changes_ are major. _Features_ would map to either major or m
 
 ### unreleased
 
+* Breaking Changes
+  * Drop support for Rails 7.1; the minimum ActiveRecord is now 7.2
 * Fixes
-  * Use `lease_connection` in `ActsAsTaggableOn::Utils.connection` to avoid the Rails 7.2 `ActiveRecord::Base.connection` deprecation warning, falling back to `connection` on ActiveRecord < 7.2
+  * Use `lease_connection` in `ActsAsTaggableOn::Utils.connection` to avoid the Rails 7.2 `ActiveRecord::Base.connection` deprecation warning
 
 ### [v13.0.0) / 2025-10-31](https://github.com/mbleigh/acts-as-taggable-on/compare/v12.0.0...v13.0.0)
 

@@ -14,21 +14,12 @@ RSpec.describe ActsAsTaggableOn::Utils do
   end
 
   describe '#connection' do
-    it 'uses lease_connection when the model responds to it' do
-      leased = ActsAsTaggableOn::Tag.connection
-      allow(ActsAsTaggableOn::Tag).to receive(:respond_to?).with(:lease_connection).and_return(true)
+    it 'uses the model lease_connection' do
+      leased = ActsAsTaggableOn::Tag.lease_connection
       allow(ActsAsTaggableOn::Tag).to receive(:lease_connection).and_return(leased)
 
       expect(ActsAsTaggableOn::Utils.connection).to eq(leased)
       expect(ActsAsTaggableOn::Tag).to have_received(:lease_connection)
-    end
-
-    it 'falls back to connection when lease_connection is unavailable' do
-      legacy = ActsAsTaggableOn::Tag.connection
-      allow(ActsAsTaggableOn::Tag).to receive(:respond_to?).with(:lease_connection).and_return(false)
-      allow(ActsAsTaggableOn::Tag).to receive(:connection).and_return(legacy)
-
-      expect(ActsAsTaggableOn::Utils.connection).to eq(legacy)
     end
   end
 
