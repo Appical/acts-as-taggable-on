@@ -6,9 +6,6 @@ module ActsAsTaggableOn
   module Utils
     class << self
       # Use ActsAsTaggableOn::Tag connection
-      #
-      # `lease_connection` avoids the Rails 7.2 `ActiveRecord::Base.connection`
-      # deprecation (rails/rails#51230).
       def connection
         ActsAsTaggableOn::Tag.lease_connection
       end
