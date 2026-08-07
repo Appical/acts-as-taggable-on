@@ -578,6 +578,8 @@ Versions >= 11.x are compatible with Ruby 3.1.0 and Rails 7.0 and 7.1.
 
 Versions >= 12.x are compatible with Ruby 3.2.0 and Rails 7.1, 7.2 and 8.0.
 
+Versions >= 14.x are compatible with Ruby 3.3+ and Rails 8.0 and 8.1.
+
 For an up-to-date roadmap, see https://github.com/mbleigh/acts-as-taggable-on/milestones
 
 ## Testing
