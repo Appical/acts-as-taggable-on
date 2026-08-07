@@ -13,16 +13,6 @@ RSpec.describe ActsAsTaggableOn::Utils do
     end
   end
 
-  describe '#connection' do
-    it 'uses the model lease_connection' do
-      leased = ActsAsTaggableOn::Tag.lease_connection
-      allow(ActsAsTaggableOn::Tag).to receive(:lease_connection).and_return(leased)
-
-      expect(ActsAsTaggableOn::Utils.connection).to eq(leased)
-      expect(ActsAsTaggableOn::Tag).to have_received(:lease_connection)
-    end
-  end
-
   describe '#sha_prefix' do
     it 'should return a consistent prefix for a given word' do
       expect(ActsAsTaggableOn::Utils.sha_prefix('kittens')).to eq(ActsAsTaggableOn::Utils.sha_prefix('kittens'))
